@@ -1,4 +1,4 @@
-# advent of code - day 1
+# --- Day 1: Secret Entrance ---
 # Robin Jack
 
 def crack_code():
