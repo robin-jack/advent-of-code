@@ -5,7 +5,7 @@ def crack_code():
 
 	dial = 50
 	psw = 0
-	with open("2025/inputs/day1_input.txt", "r") as file:
+	with open("2025/inputs/day1.txt", "r") as file:
 		for line in file:
 
 			turn = line[0]
@@ -37,7 +37,7 @@ def second_half():
 
 	dial = 50
 	psw = 0
-	with open("2025/inputs/day1_input.txt", "r") as file:
+	with open("2025/inputs/day1.txt", "r") as file:
 		for line in file:
 
 			turn = line[0]

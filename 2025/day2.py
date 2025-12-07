@@ -3,7 +3,7 @@
 
 def sum_invalids():
 	ids_sum = 0
-	with open("2025/inputs/day2_input.txt", "r") as file:
+	with open("2025/inputs/day2.txt", "r") as file:
 		line = file.read()
 		ids = line.split(",")
 		for ide in ids:
@@ -21,7 +21,7 @@ def sum_invalids():
 
 def second_half():
 	ids_sum = 0
-	with open("2025/inputs/day2_input.txt", "r") as file:
+	with open("2025/inputs/day2.txt", "r") as file:
 		line = file.read()
 		ids = line.split(",")
 		for ide in ids:
