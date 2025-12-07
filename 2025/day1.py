@@ -33,6 +33,8 @@ def crack_code():
 
 	return psw
 
+# --- Part Two ---
+
 def second_half():
 
 	dial = 50

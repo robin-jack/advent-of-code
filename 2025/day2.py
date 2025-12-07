@@ -19,6 +19,8 @@ def sum_invalids():
 						ids_sum += n
 	return ids_sum
 
+# --- Part Two ---
+
 def second_half():
 	ids_sum = 0
 	with open("2025/inputs/day2.txt", "r") as file:
@@ -47,7 +49,6 @@ def second_half():
 							#print(n)
 							ids_sum += n
 							break
-
 	return ids_sum
 
 
