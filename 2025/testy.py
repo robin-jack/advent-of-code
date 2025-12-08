@@ -12,6 +12,13 @@
 
 # print(grid[1][3])
 
-a = [[1, 2], [3, 4]]
-for i, j in a:
-	print(i, j)
+# a = [[1, 2], [3, 4]]
+# for i, j in a:
+# 	print(i, j)
+
+
+# x = "3-5"
+# r = [int(n) for n in x.split("-")]
+# w = (3, 5)
+# for i in range(w[0], w[1]+1):
+# 	print(i)
