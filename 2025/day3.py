@@ -2,7 +2,7 @@
 # Robin Jack
 
 def jolter():
-	with open("inputs/day3.txt", "r") as file:
+	with open("2025/inputs/day3.txt", "r") as file:
 		jolts = 0
 		for bank in file:
 			lg = largest_pair(bank.strip())
@@ -29,10 +29,42 @@ def largest_pair(bank):
 	# print(bank[dec]+bank[uni])
 	return bank[dec]+bank[uni]
 
+# --- Part Two ---
+
+def super_jolter():
+	with open("2025/inputs/day3.txt", "r") as file:
+		jolts = 0
+		for bank in file:
+			ld = dozen(bank.strip())
+			# print(ld)
+			jolts += int(ld)
+	return jolts
+
+def dozen(bank):
+	d = 12
+	doz = "" # formed number
+	last = 0 # index of last picked number
+	for n in range(d):
+		upto = len(bank)-(d-(len(doz)+1)+1) # look up to here
+		for i in range(last, upto):
+			a = bank[last]
+			b = bank[i+1]
+			if b > a:
+				last = i+1
+		doz += bank[last]
+		last += 1
+	# print(doz)
+	return doz
+
 
 if __name__ == "__main__":
 	jolts = jolter()
 	print(jolts)
+
+	print("---")
+
+	sjolts = super_jolter()
+	print(sjolts)
 	
-    # b = "987654321111111"
-    # largest_pair(b)
+	# b = "818181911112111"
+	# dozen(b)
