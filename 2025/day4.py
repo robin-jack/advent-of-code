@@ -1,11 +1,9 @@
 # --- Day 4: Printing Department ---
 # Robin Jack
 
-global grid
-
 def get_grid():
 	grid = []
-	with open("tests/day4.txt", "r") as file:
+	with open("inputs/day4.txt", "r") as file:
 		for line in file:
 			row = []
 			for c in line.strip():
@@ -50,7 +48,51 @@ def gri():
 		print(r)
 	print("---")
 
+# --- Part Two ---
+
+def rollit():
+	total = 0
+	grid = get_grid()
+	while True:
+		access, to_remove = rollerblade(grid)
+		total += access
+		if access == 0:
+			break
+		for i, j in to_remove:
+			grid[i][j] = 0
+	return total
+			
+
+def rollerblade(grid):
+	access = 0
+	to_remove = []
+
+	for row in range(len(grid)):
+		for c in range(len(grid[row])):
+			if grid[row][c]:
+				suma = -1 # so it doesnt count itself
+				for i in range(-1, 2):
+					for j in range(-1, 2):
+						suma += rget(grid, row+i, c+j)
+				# print(row, c, "=", suma)
+				if suma < 4:
+					access += 1
+					to_remove.append([row, c])
+	# print(access)
+	return access, to_remove
+
+def rget(grid, i, j):
+	cell = 0
+	if 0 <= i < len(grid):
+		if 0 <= j < len(grid[i]):
+			cell = grid[i][j]
+	return cell
+
 if __name__ == "__main__":
-	# gri()
 	a = roller()
 	print(a)
+
+	print("---")
+
+	t = rollit()
+	print(t)
