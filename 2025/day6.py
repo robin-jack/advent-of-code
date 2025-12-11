@@ -1,7 +1,7 @@
 # --- Day 6: Trash Compactor ---
 # Robin Jack
 
-path = "tests/day6.txt"
+path = "inputs/day6.txt"
 
 def operations():
     ops = None
@@ -40,87 +40,62 @@ def do_ope(subto, num, ope):
 
 # --- Part Two ---
 
-def create_num_list():
-    ops = None
-    with open(path, "r") as file:
-        for line in file:
-            ops = list(line)
-
-    # +  *  +    *
-    # -----------
-    for i in range(len(ops)):
-        if i == 0:
-            pass
-        else:
-            try:
-                if (ops[i-1] != " " and ops[i+1] == " "):
-                    ops[i] = ops[i-1]
-            except IndexError:
-                ops[i] = ops[i-1]
-    # -----------
+def get_nums():
     num_list = []
     with open(path, "r") as file:
         for line in file:
             if "*" in line:
                 break
             num_list.append(list(line.strip("\n")))
-    num_list = num_list_zerofier(num_list, ops)
-    # print(num_list)
-    for x in num_list:
-        for y in x:
-            if y == " ":
-                x.remove(" ")
-    for z in ops:
-        if z == " ":
-            ops.remove(z)
-    print("ops:\n", ops)
-    print("num_list:")
-    for n in num_list:
-        print(n)
-    # -----------
+    # for i in num_list:
+    #   print(i)
+    
+    fil = len(num_list)
+    col = len(num_list[0])
+    transpuesta = []
+    # print("---")
+    for i in range(col):
+        concat = "" # [ [], [], [], []]
+        for j in range(fil):
+            #print(f"{transpuesta[j]} = {transpuesta[j][0]} + {num_list[j][i]}")
+            concat += num_list[j][i].strip()
+        transpuesta.append(concat)
+    
+    # print(transpuesta)
+    # print("---")
+
+    ops = operations()
     total = []
     for j in range(len(ops)):
         if ops[j] == "+":
-            total.append(0)
+            total.append([0])
         elif ops[j] == "*":
-            total.append(1)
-    print("total:\n", total)
+            total.append([1])
+    # print(total)
 
-    return total, num_list, ops
+    o = 0
+    while (o < len(ops)-1):
+        for n in transpuesta:
+            if n == "":
+                o += 1
+            elif ops[o] == "*":
+                # print(f"{total[o]} = [{int(n)} * {total[o][0]}]")
+                total[o] = [int(n) * total[o][0]]
+            else:
+                # print(f"{total[o]} = [{int(n)} + {total[o][0]}]")
+                total[o] = [int(n) + total[o][0]]
 
-def num_list_zerofier(nums, ops):
-    for sub in nums:
-        for i in range(len(sub)):
-            if sub[i] == " " and ops[i] != " ":
-                if ops[i]:
-                    sub[i] = '0'
-    return nums
-
-def manipulator():
-    total, num_list, ops = create_num_list()
-
-    for i in range(len(num_list)):
-        for j in range(len(num_list[i])):
-            total[j] = calcolo(total[j], num_list[i][j], ops[j])
-
-    print(total)
-
-
-def calcolo(subto, n, ope):
-    if n != " ":
-        if ope == "+":
-            subto += int(n)
-        else:
-            subto *= int(n)
-        return subto
-    else:
-        return 0
+    # print(total)
+    total_sum = sum(i[0] for i in total)
+    # print(total_sum)
+    return total_sum
 
 
 if __name__ == "__main__":
-    # t = mathy()
-    # print(t)
+    t = mathy()
+    print(t)
 
     print("---")
 
-    manipulator()
+    n = get_nums()
+    print(n)
