@@ -63,3 +63,7 @@ print(a[0])
 
 if int("1"):
 	print("aaa")
+
+print("011213331311110")
+x = "011213331311110"
+print(sum(int(i) for i in x))
