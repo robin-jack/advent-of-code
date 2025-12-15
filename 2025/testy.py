@@ -55,15 +55,30 @@
 # print(b)
 # print(b.count("*"))
 
-a = [[1], [2], [3], [4], [5], [6], [7], [8]]
+# a = [[1], [2], [3], [4], [5], [6], [7], [8]]
 
-b = "2"
-a[0] = 3
-print(a[0])
+# b = "2"
+# a[0] = 3
+# print(a[0])
 
-if int("1"):
-	print("aaa")
+# if int("1"):
+# 	print("aaa")
 
-print("011213331311110")
-x = "011213331311110"
-print(sum(int(i) for i in x))
+# print("011213331311110")
+# x = "011213331311110"
+# print(sum(int(i) for i in x))
+
+
+a = [[2, 3], [4, 5], [5, 7]]
+
+x = [5 in x for x in a]
+
+mom = []
+b = [2, 3]
+mom.append(b)
+print(mom)
+
+s = 0
+for i in range(20):
+	s += i
+print(s)
