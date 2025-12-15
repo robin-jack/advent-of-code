@@ -1,10 +1,11 @@
 # --- Day 8: Playground ---
+# Robin Jack
 
 import math
 
-path = "inputs/day8.txt"
+path = "tests/day8.txt"
 
-connections_to_make = 1000
+connections_to_make = 10
 
 class Box:
 
@@ -14,7 +15,7 @@ class Box:
 		self.x = box[0]
 		self.y = box[1]
 		self.z = box[2]
-		self.index = index+1
+		self.index = index
 		self.name = f"Box n.{self.index}"
 		self.connections = set()
 		self.circuit = {self}
@@ -53,10 +54,11 @@ class Box:
 
 	def __repr__(self):
 		conns = " ".join([str(i.index) for i in sorted(self.connections)])
-		p = f"{self.name}\n" \
-			f"[{self.x}, {self.y}, {self.z}]\n" \
-			f"Connected to: {conns}\n" \
-			f"Circuit Length: {len(self.circuit)}\n"
+		# p = f"{self.name}\n" \
+		# 	f"[{self.x}, {self.y}, {self.z}]\n" \
+		# 	f"Connected to: {conns}\n" \
+		# 	f"Circuit Length: {len(self.circuit)}\n"
+		p = str(self.index)
 		return p
 
 # --- --- ---
@@ -110,7 +112,8 @@ def circuiter(boxes):
 		if not any(box in cc for cc in circuits):
 			circuit = find_connected(box)
 			circuits.append(circuit)
-	# print([len(c) for c in circuits])
+	print([str(b) for b in circuits])
+	print([len(c) for c in circuits])
 
 	multi = 1
 	last = float('inf')
@@ -144,19 +147,17 @@ def connect_all():
 					closest = d
 					cbox = [p1, p2]
 		one_circuit, result = cbox[0].connect(cbox[1])
-		print(k)
+		# print(k)
 		k+=1
-
 
 	return result
 
 
 if __name__ == "__main__":
-	# boxes = closest()
-	# circuiter(boxes)
+	boxes = closest()
+	circuiter(boxes)
 
-	# print("---")
+	print("---")
 
 	result = connect_all()
 	print(result)
-
